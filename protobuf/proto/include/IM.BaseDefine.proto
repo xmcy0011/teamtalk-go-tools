@@ -4,7 +4,7 @@
 //修改: proto2  升级到 proto3.6
 
 syntax = "proto3";
-package IM.BaseDefine;
+package im_protocol;
 option java_package = "com.mogujie.tt.protobuf";
 //option java_outer_classname = "MOGUJIEIMMessage";
 //由于生成java代码时不在支持 optimize_for = LITE_RUNTIME；采用默认的SPEED

@@ -4,7 +4,7 @@
 //修改: proto2  升级到 proto3.6
 
 syntax="proto3";
-package IM.Message;
+package im_protocol;
 import "IM.BaseDefine.proto";
 option java_package = "com.mogujie.tt.protobuf";
 //由于生成java代码时不在支持 optimize_for = LITE_RUNTIME；采用默认的SPEED
@@ -17,7 +17,7 @@ message IMMsgData{
 	uint32 to_session_id = 2;				//消息接受方
 	uint32 msg_id = 3;
 	uint32 create_time = 4; 
-	IM.BaseDefine.MsgType msg_type = 5;
+	im_protocol.MsgType msg_type = 5;
 	bytes msg_data = 6;
 	bytes attach_data = 20;
 }
@@ -27,7 +27,7 @@ message IMMsgDataAck{
 	uint32 user_id = 1;			//发送此信令的用户id
 	uint32 session_id = 2;				
 	uint32 msg_id = 3;
-	IM.BaseDefine.SessionType session_type = 4;
+	im_protocol.SessionType session_type = 4;
 }
 
 message IMMsgDataReadAck{
@@ -35,7 +35,7 @@ message IMMsgDataReadAck{
 	uint32 user_id = 1;			//发送此信令的用户id
 	uint32 session_id = 2;			
 	uint32 msg_id = 3;
-	IM.BaseDefine.SessionType session_type = 4;
+	im_protocol.SessionType session_type = 4;
 }
 
 message IMMsgDataReadNotify{
@@ -43,7 +43,7 @@ message IMMsgDataReadNotify{
 	uint32 user_id = 1;			//发送此信令的用户id
 	uint32 session_id = 2;		
 	uint32 msg_id = 3;
-	IM.BaseDefine.SessionType session_type = 4;
+	im_protocol.SessionType session_type = 4;
 }
 
 message IMClientTimeReq{
@@ -65,14 +65,14 @@ message IMUnreadMsgCntRsp{
 	//cmd id:		0x0308
 	uint32 user_id = 1;
 	uint32 total_cnt = 2;
-	repeated IM.BaseDefine.UnreadInfo unreadinfo_list = 3;
+	repeated im_protocol.UnreadInfo unreadinfo_list = 3;
 	bytes attach_data = 20;
 }
 
 message IMGetMsgListReq{
 	//cmd id:		0x0309
 	uint32 user_id = 1;
-	IM.BaseDefine.SessionType session_type = 2;
+	im_protocol.SessionType session_type = 2;
 	uint32 session_id = 3;
 	uint32 msg_id_begin = 4;
 	uint32 msg_cnt = 5;
@@ -85,17 +85,17 @@ message IMGetMsgListReq{
 message IMGetMsgListRsp{
 	//cmd id:		0x030a
 	uint32 user_id = 1;
-	IM.BaseDefine.SessionType session_type = 2;
+	im_protocol.SessionType session_type = 2;
 	uint32 session_id = 3;
 	uint32 msg_id_begin = 4;
-	repeated IM.BaseDefine.MsgInfo msg_list = 5;
+	repeated im_protocol.MsgInfo msg_list = 5;
 	bytes attach_data = 20;
 }
 
 message IMGetLatestMsgIdReq{
 	//cmd id: 		0x030b
 	uint32 user_id = 1;
-	IM.BaseDefine.SessionType session_type = 2;
+	im_protocol.SessionType session_type = 2;
 	uint32 session_id = 3;
 	bytes attach_data = 20;
 }
@@ -103,7 +103,7 @@ message IMGetLatestMsgIdReq{
 message IMGetLatestMsgIdRsp{
 	//cmd id:		0x030c
 	uint32 user_id = 1;
-	IM.BaseDefine.SessionType session_type = 2;
+	im_protocol.SessionType session_type = 2;
 	uint32 session_id = 3;
 	uint32 latest_msg_id = 4;
 	bytes attach_data = 20;
@@ -112,7 +112,7 @@ message IMGetLatestMsgIdRsp{
 message IMGetMsgByIdReq{
 	//cmd id: 		0x030d
 	uint32 user_id = 1;
-	IM.BaseDefine.SessionType session_type = 2;
+	im_protocol.SessionType session_type = 2;
 	uint32 session_id = 3; 
 	repeated uint32 msg_id_list = 4;
 	bytes attach_data = 20;
@@ -121,8 +121,8 @@ message IMGetMsgByIdReq{
 message IMGetMsgByIdRsp{
 	//cmd id:		0x030e
 	uint32 user_id = 1;
-	IM.BaseDefine.SessionType session_type = 2;
+	im_protocol.SessionType session_type = 2;
 	uint32 session_id = 3;
-	repeated IM.BaseDefine.MsgInfo msg_list = 4;
+	repeated im_protocol.MsgInfo msg_list = 4;
 	bytes attach_data = 20;
 }
